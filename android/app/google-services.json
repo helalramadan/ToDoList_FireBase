@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "905683143153",
+    "project_id": "todolist-df5bc",
+    "storage_bucket": "todolist-df5bc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:905683143153:android:6bfcc9bba8cc33b4209c50",
+        "android_client_info": {
+          "package_name": "com.Helal.Ramadan.todolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "905683143153-oas0l71g0075tdo1tc30ten8hc3n1un4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.Helal.Ramadan.todolist",
+            "certificate_hash": "08fad623994acd22fa90b83a1d183f824c1a7b0c"
+          }
+        },
+        {
+          "client_id": "905683143153-perssorji1sotgu0k8p0vh5sltg6js20.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBy2oQC73o81bnYAQez8g0P4iuz2nPVs6U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "905683143153-perssorji1sotgu0k8p0vh5sltg6js20.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
