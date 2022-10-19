@@ -52,7 +52,7 @@ class To_Cubit extends Cubit<To_State> {
         name: name,
         email: email,
         phone: phone,
-        uId: uId,
+        id: uId,
         image:
             'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
         cover:
@@ -124,10 +124,10 @@ class To_Cubit extends Cubit<To_State> {
     required String uId,
   }) {
     TodoUserModle modelUpdate = TodoUserModle(
-      name: name,
+      titel: name,
       email: email,
       phone: phone,
-      uId: uId,
+      id: uId,
       image:
           'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
       cover:
@@ -175,6 +175,7 @@ class To_Cubit extends Cubit<To_State> {
     // });
   }
 
+  List<TodoUserModle> notes = [];
   void getDataBase() {
     newTaskes = [];
     doneTaskes = [];
@@ -183,18 +184,18 @@ class To_Cubit extends Cubit<To_State> {
         .collection('notes')
         .doc(uId)
         .collection('note')
-        .doc()
-        .get()
-        .then((value) {
-      // value.forEach((Element) {
-      //   if (Element["status"] == "new") {
-      //     newTaskes.add(Element);
-      //   } else if (Element["status"] == "done") {
-      //     doneTaskes.add(Element);
-      //   } else {
-      //     arcivedTaskes.add(Element);
-      //   }
+        // .doc()
+        .snapshots()
+        .listen((event) {
+      notes = [];
+      event.docs.forEach((element) {
+        notes.add(TodoUserModle.fromJson(element.data()));
+        // event.data()!.values.forEach((element) {
+        //   notes.add(TodoUserModle.fromJson(element));
+        // });
+      });
     });
+
     emit(GetDataBase_state());
   }
 }

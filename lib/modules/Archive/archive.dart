@@ -15,7 +15,7 @@ class Archive_Screen extends StatelessWidget {
           condition: To_Cubit.get(context).arcivedTaskes.isNotEmpty,
           builder: (context) => ListView.separated(
             itemBuilder: (BuildContext context, int index) => BuildTaske(
-              To_Cubit.get(context).arcivedTaskes[index],
+              To_Cubit.get(context).notes[index], //achive taskes
               context,
             ),
             separatorBuilder: (context, int index) => Container(

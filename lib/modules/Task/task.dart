@@ -14,10 +14,10 @@ class Task_Screen extends StatelessWidget {
       listener: (context, state) {},
       builder: (context, state) {
         return ConditionalBuilder(
-          condition: To_Cubit.get(context).newTaskes.isNotEmpty,
+          condition: To_Cubit.get(context).notes.isNotEmpty,
           builder: (context) => ListView.separated(
             itemBuilder: (BuildContext context, int index) => BuildTaske(
-              To_Cubit.get(context).newTaskes[index],
+              To_Cubit.get(context).notes[index],
               context,
             ),
             separatorBuilder: (context, int index) => Container(
@@ -25,7 +25,7 @@ class Task_Screen extends StatelessWidget {
               width: double.infinity,
               color: Colors.grey,
             ),
-            itemCount: To_Cubit.get(context).newTaskes.length,
+            itemCount: To_Cubit.get(context).notes.length,
           ),
           fallback: (context) => Center(
             child: Column(

@@ -16,7 +16,7 @@ class Done_Screen extends StatelessWidget {
           condition: To_Cubit.get(context).doneTaskes.isNotEmpty,
           builder: (context) => ListView.separated(
             itemBuilder: (BuildContext context, int index) => BuildTaske(
-              To_Cubit.get(context).doneTaskes[index],
+              To_Cubit.get(context).notes[index], //done taskes
               context,
             ),
             separatorBuilder: (context, int index) => Container(

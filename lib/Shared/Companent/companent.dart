@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:todolist/global_cubit/cubit.dart';
+import 'package:todolist/models/model_social.dart';
 
 Future navigetorAndFinish(context, widget) => Navigator.pushAndRemoveUntil(
       context,
@@ -107,8 +108,8 @@ Color changeColor(TostState state) {
   return color;
 }
 
-Widget BuildTaske(Map model, context) => Dismissible(
-      key: Key(model["id"].toString()),
+Widget BuildTaske(TodoUserModle model, context) => Dismissible(
+      key: Key(model.id.toString()),
       onDismissed: (direction) {
         // To_Cubit.get(context).DeletDataBase(id: model["id"]);
       },
@@ -118,7 +119,7 @@ Widget BuildTaske(Map model, context) => Dismissible(
           children: [
             CircleAvatar(
               radius: 40.0,
-              child: Text('${model['time']}'),
+              child: Text('${model.time}'),
             ),
             const SizedBox(
               width: 10.0,
@@ -128,7 +129,7 @@ Widget BuildTaske(Map model, context) => Dismissible(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    '${model['titel']}',
+                    '${model.title}',
                     style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -138,7 +139,7 @@ Widget BuildTaske(Map model, context) => Dismissible(
                     height: 8.0,
                   ),
                   Text(
-                    '${model['date']}',
+                    '${model.date}',
                     style: const TextStyle(color: Colors.grey),
                   ),
                 ],
