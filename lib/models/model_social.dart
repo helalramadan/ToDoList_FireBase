@@ -17,6 +17,7 @@ class TodoUserModle {
     this.phone,
     this.name,
     this.Id,
+    this.uId,
     this.image,
     this.cover,
     this.time,

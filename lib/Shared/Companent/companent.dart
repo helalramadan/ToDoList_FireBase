@@ -109,7 +109,7 @@ Color changeColor(TostState state) {
 }
 
 Widget BuildTaske(TodoUserModle model, context) => Dismissible(
-      key: Key(model.id.toString()),
+      key: Key(model.Id.toString()),
       onDismissed: (direction) {
         // To_Cubit.get(context).DeletDataBase(id: model["id"]);
       },
@@ -129,7 +129,7 @@ Widget BuildTaske(TodoUserModle model, context) => Dismissible(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    '${model.title}',
+                    '${model.titel}',
                     style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,

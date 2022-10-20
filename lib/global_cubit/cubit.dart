@@ -52,12 +52,12 @@ class To_Cubit extends Cubit<To_State> {
         name: name,
         email: email,
         phone: phone,
-        id: uId,
+        uId: uId,
         image:
             'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
         cover:
             'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
-        bio: 'Write Your Bio .....',
+        // bio: 'Write Your Bio .....',
         isEmailVerified: false);
     emit(CreatUserLoadingState());
     FirebaseFirestore.instance
@@ -127,12 +127,12 @@ class To_Cubit extends Cubit<To_State> {
       titel: name,
       email: email,
       phone: phone,
-      id: uId,
+      uId: uId,
       image:
           'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
       cover:
           'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
-      bio: 'Write Your Bio .....',
+      // bio: 'Write Your Bio .....',
     );
     FirebaseFirestore.instance
         .collection("notes")
