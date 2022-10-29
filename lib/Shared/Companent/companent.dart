@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:todolist/Shared/Constans/constans.dart';
 import 'package:todolist/global_cubit/cubit.dart';
 import 'package:todolist/models/model_social.dart';
 
@@ -55,7 +56,7 @@ Widget defultTextForm({
 Widget defultButton({
   required Function onPressed,
   double width = double.infinity,
-  Color backgraound = Colors.blue,
+  Color backgraound = Colors.orange,
   required String text,
   bool isUppercase = true,
   double radius = 3.0,
@@ -114,63 +115,83 @@ Widget BuildTaske(TodoUserModle model, context) => Dismissible(
         // To_Cubit.get(context).DeletDataBase(id: model["id"]);
       },
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
-        child: Row(
-          children: [
-            CircleAvatar(
-              radius: 40.0,
-              child: Text('${model.time}'),
+        padding: const EdgeInsets.all(15.0),
+        child: Container(
+          decoration: BoxDecoration(
+            border:
+                Border.all(color: Colors.orange), // color: Colors.teal[300],
+            borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(50.0),
+              topLeft: Radius.circular(50.0),
             ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            Expanded(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Text(
-                    '${model.titel}',
-                    style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                width: 15.0,
+              ),
+              Checkbox(
+                value: To_Cubit.get(context).isCheked,
+                onChanged: (value) {
+                  To_Cubit.get(context).chekedBox(value);
+                },
+                checkColor: defaultMainColor,
+              ),
+              SizedBox(
+                width: 25.0,
+              ),
+              Expanded(
+                child: Row(
+                  children: [
+                    Column(
+                      children: [
+                        SizedBox(
+                          height: 25.0,
+                        ),
+                        Text('${model.time}', textAlign: TextAlign.center),
+                        Text(
+                          '${model.title}',
+                          style: TextStyle(
+                              decoration: To_Cubit.get(context).isCheked
+                                  ? TextDecoration.lineThrough
+                                  : null,
+                              fontSize: 24.0,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        Text('${model.date}', textAlign: TextAlign.center),
+                        SizedBox(
+                          height: 25.0,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8.0,
-                  ),
-                  Text(
-                    '${model.date}',
-                    style: const TextStyle(color: Colors.grey),
+                  ],
+                ),
+              ),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(right: 25.0),
+                    child: Column(
+                      children: [
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        Text(
+                          'Edit'.toUpperCase(),
+                          style: TextStyle(fontSize: 12.0),
+                        ),
+                        SizedBox(
+                          height: 15.0,
+                        ),
+                        IconButton(onPressed: () {}, icon: Icon(Icons.alarm))
+                      ],
+                    ),
                   ),
                 ],
               ),
-            ),
-            const SizedBox(
-              width: 10.0,
-            ),
-            IconButton(
-              iconSize: 30.0,
-              onPressed: () {
-                // To_Cubit.get(context)
-                //     .UpdateDataBase(status: "done", id: model["id"]);
-              },
-              icon: const Icon(
-                Icons.check_box,
-                color: Color.fromARGB(255, 0, 140, 255),
-              ),
-            ),
-            IconButton(
-              onPressed: () {
-                // To_Cubit.get(context)
-                //     .UpdateDataBase(status: "arcived", id: model["id"]);
-              },
-              iconSize: 30.0,
-              icon: const Icon(
-                Icons.archive,
-                color: Colors.black38,
-              ),
-            )
-          ],
+            ],
+          ),
         ),
       ),
     );

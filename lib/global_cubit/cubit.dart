@@ -5,8 +5,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todolist/Shared/Constans/constans.dart';
 import 'package:todolist/global_cubit/cubitstat.dart';
 import 'package:todolist/models/model_social.dart';
+import 'package:todolist/modules/Active/active.dart';
 
-import 'package:todolist/modules/Archive/archive.dart';
 import 'package:todolist/modules/Done/done.dart';
 import 'package:todolist/modules/Task/task.dart';
 
@@ -15,16 +15,23 @@ class To_Cubit extends Cubit<To_State> {
 
   static To_Cubit get(context) => BlocProvider.of(context);
 
+  var titleController = TextEditingController();
+  var dateController = TextEditingController();
+  var timeController = TextEditingController();
+
   int curentindex = 0;
-  List<Map> newTaskes = [];
-  List<Map> doneTaskes = [];
-  List<Map> arcivedTaskes = [];
 
   // late Database dataBase;
-  List<Widget> Screen = [Task_Screen(), Done_Screen(), Archive_Screen()];
+  List<Widget> Screen = [Task_Screen(), Done_Screen(), Active_Screen()];
   void change(index) {
     curentindex = index;
     emit(Change_state());
+  }
+
+  bool isCheked = false;
+  void chekedBox(value) {
+    isCheked = value;
+    emit(ChekedBoxState());
   }
 
   void userLogin({
@@ -58,7 +65,7 @@ class To_Cubit extends Cubit<To_State> {
         cover:
             'https://img.freepik.com/free-vector/mysterious-mafia-man-smoking-cigarette_52683-34828.jpg',
         // bio: 'Write Your Bio .....',
-        isEmailVerified: false);
+        isCheked: false);
     emit(CreatUserLoadingState());
     FirebaseFirestore.instance
         .collection('user')
@@ -124,7 +131,7 @@ class To_Cubit extends Cubit<To_State> {
     required String uId,
   }) {
     TodoUserModle modelUpdate = TodoUserModle(
-      titel: name,
+      title: name,
       email: email,
       phone: phone,
       uId: uId,
@@ -147,6 +154,7 @@ class To_Cubit extends Cubit<To_State> {
     required String title,
     required String time,
     required String date,
+    bool isCheked = false,
   }) {
     FirebaseFirestore.instance
         .collection('notes')
@@ -161,25 +169,14 @@ class To_Cubit extends Cubit<To_State> {
       emit(GetDataBase_state());
       getDataBase();
     });
-    // dataBase.transaction((txn) async {
-    //   txn
-    //       .rawInsert(
-    //           'INSERT INTO taskes (titel,date,time,status) VALUES("$title","$date","$time","new")')
-    //       .then((value) {
-    //     print('$value insert data base in done');
-    //     emit(InsertDataBase_state());
-    //     getDataBase(dataBase);
-    //   }).catchError((error) {
-    //     print("error when insert database ${error.toString()}");
-    //   });
-    // });
   }
 
+  TodoUserModle? userModleNote;
   List<TodoUserModle> notes = [];
+  List<TodoUserModle> notesDone = [];
+  List<TodoUserModle> notesActive = [];
   void getDataBase() {
-    newTaskes = [];
-    doneTaskes = [];
-    arcivedTaskes = [];
+    emit(GetLoadingDataBase_state());
     FirebaseFirestore.instance
         .collection('notes')
         .doc(uId)
@@ -194,6 +191,11 @@ class To_Cubit extends Cubit<To_State> {
         //   notes.add(TodoUserModle.fromJson(element));
         // });
       });
+
+      notesDone = [];
+      // event.docs.where((element) => isCheked == true).forEach((element) {
+      //   notesDone.add(TodoUserModle.fromJson(element.data()));
+      // });
     });
 
     emit(GetDataBase_state());

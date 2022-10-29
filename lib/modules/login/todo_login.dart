@@ -51,13 +51,13 @@ class TodoLoginScreen extends StatelessWidget {
                       const SizedBox(
                         height: 30.0,
                       ),
-                      Text(
-                        'Login Now To Communicate With Friend'.toUpperCase(),
-                        style: TextStyle(
-                            color: Colors.grey[900],
-                            fontWeight: FontWeight.w100,
-                            fontSize: 20.0),
-                      ),
+                      // Text(
+                      //   'Login Now To Communicate With Friend'.toUpperCase(),
+                      //   style: TextStyle(
+                      //       color: Colors.grey[900],
+                      //       fontWeight: FontWeight.w100,
+                      //       fontSize: 20.0),
+                      // ),
                       const SizedBox(
                         height: 30.0,
                       ),

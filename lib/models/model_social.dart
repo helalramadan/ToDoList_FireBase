@@ -1,5 +1,5 @@
 class TodoUserModle {
-  String? titel;
+  String? title;
   String? email;
   String? phone;
   String? name;
@@ -9,10 +9,10 @@ class TodoUserModle {
   String? time;
   String? uId;
   String? Id;
-  bool? isEmailVerified;
+  bool? isCheked;
 
   TodoUserModle({
-    this.titel,
+    this.title,
     this.email,
     this.phone,
     this.name,
@@ -22,11 +22,11 @@ class TodoUserModle {
     this.cover,
     this.time,
     this.date,
-    this.isEmailVerified,
+    this.isCheked,
   });
   TodoUserModle.fromJson(Map<String, dynamic> json) {
     name = json['name'];
-    titel = json['titel'];
+    title = json['title'];
     email = json['email'];
     phone = json['phone'];
     uId = json['uId'];
@@ -35,12 +35,12 @@ class TodoUserModle {
     cover = json['cover'];
     time = json['time'];
     date = json['date'];
-    isEmailVerified = json['isEmailVerified'];
+    isCheked = json['isCheked'];
   }
   Map<String, dynamic> toMap() {
     return {
       'name': name,
-      'title': titel,
+      'title': title,
       'email': email,
       'phone': phone,
       'uId': uId,
@@ -49,7 +49,7 @@ class TodoUserModle {
       'cover': cover,
       'time': time,
       'date': date,
-      'isEmailVerified': isEmailVerified,
+      'isCheked': isCheked,
     };
   }
 }

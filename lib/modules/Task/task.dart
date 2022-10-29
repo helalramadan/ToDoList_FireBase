@@ -22,8 +22,8 @@ class Task_Screen extends StatelessWidget {
             ),
             separatorBuilder: (context, int index) => Container(
               height: 1,
-              width: double.infinity,
-              color: Colors.grey,
+              // width: double.infinity,
+              // color: Colors.grey,
             ),
             itemCount: To_Cubit.get(context).notes.length,
           ),
