@@ -109,7 +109,8 @@ Color changeColor(TostState state) {
   return color;
 }
 
-Widget BuildTaske(TodoUserModle model, context) => Dismissible(
+Widget BuildTaske(TodoUserModle model, bool checkebool, context, int index) =>
+    Dismissible(
       key: Key(model.Id.toString()),
       onDismissed: (direction) {
         // To_Cubit.get(context).DeletDataBase(id: model["id"]);
@@ -132,9 +133,9 @@ Widget BuildTaske(TodoUserModle model, context) => Dismissible(
                 width: 15.0,
               ),
               Checkbox(
-                value: To_Cubit.get(context).isCheked,
+                value: checkebool,
                 onChanged: (value) {
-                  To_Cubit.get(context).chekedBox(value);
+                  To_Cubit.get(context).chekedBox[inde](value);
                 },
                 checkColor: defaultMainColor,
               ),
@@ -153,7 +154,7 @@ Widget BuildTaske(TodoUserModle model, context) => Dismissible(
                         Text(
                           '${model.title}',
                           style: TextStyle(
-                              decoration: To_Cubit.get(context).isCheked
+                              decoration: To_Cubit.get(context).isCheked[index]
                                   ? TextDecoration.lineThrough
                                   : null,
                               fontSize: 24.0,

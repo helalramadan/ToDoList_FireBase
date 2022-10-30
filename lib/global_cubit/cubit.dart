@@ -28,9 +28,9 @@ class To_Cubit extends Cubit<To_State> {
     emit(Change_state());
   }
 
-  bool isCheked = false;
-  void chekedBox(value) {
-    isCheked = value;
+  List<bool> isCheked = [];
+  void chekedBox(bool value, index) {
+    isCheked[index] = value;
     emit(ChekedBoxState());
   }
 
@@ -122,6 +122,27 @@ class To_Cubit extends Cubit<To_State> {
     //   getDataBase(dataBase);
     //   emit(DeletDataBase_state());
     // });
+  }
+
+  void UpdateDataTask({
+    required String title,
+    required String time,
+    required String date,
+    bool isCheked = false,
+  }) {
+    TodoUserModle modelUpdate =
+        TodoUserModle(title: title, time: time, date: date, isCheked: isCheked);
+    FirebaseFirestore.instance
+        .collection("notes")
+        .doc(uId)
+        .collection('note')
+        .doc()
+        .update(
+          modelUpdate.toMap(),
+        )
+        .then((value) {
+      emit(UpdateDataBase_state());
+    });
   }
 
   void UpdateDataBase({

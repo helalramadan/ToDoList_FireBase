@@ -15,10 +15,14 @@ class Done_Screen extends StatelessWidget {
         return ConditionalBuilder(
           condition: To_Cubit.get(context).notesDone.isNotEmpty,
           builder: (context) => ListView.separated(
-            itemBuilder: (BuildContext context, int index) => BuildTaske(
-              To_Cubit.get(context).notesDone[index], //done taskes
-              context,
-            ),
+            itemBuilder: (BuildContext context, int index) {
+              To_Cubit.get(context).isCheked.add(false);
+              return BuildTaske(
+                  To_Cubit.get(context).notesDone[index],
+                  To_Cubit.get(context).isCheked[index], //done taskes
+                  context,
+                  index);
+            },
             separatorBuilder: (context, int index) => Container(
               height: 1,
               // width: double.infinity,

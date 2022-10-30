@@ -8,6 +8,7 @@ import 'package:todolist/global_cubit/cubitstat.dart';
 
 class Task_Screen extends StatelessWidget {
   @override
+
   // To_Cubit taskes = To_Cubit.get(context);
   Widget build(context) {
     return BlocConsumer<To_Cubit, To_State>(
@@ -16,10 +17,11 @@ class Task_Screen extends StatelessWidget {
         return ConditionalBuilder(
           condition: To_Cubit.get(context).notes.isNotEmpty,
           builder: (context) => ListView.separated(
-            itemBuilder: (BuildContext context, int index) => BuildTaske(
-              To_Cubit.get(context).notes[index],
-              context,
-            ),
+            itemBuilder: (BuildContext context, int index) {
+              To_Cubit.get(context).isCheked.add(false);
+              return BuildTaske(To_Cubit.get(context).notes[index],
+                  To_Cubit.get(context).isCheked[index], context, index);
+            },
             separatorBuilder: (context, int index) => Container(
               height: 1,
               // width: double.infinity,
