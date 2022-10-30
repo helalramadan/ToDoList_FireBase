@@ -135,7 +135,8 @@ Widget BuildTaske(TodoUserModle model, bool checkebool, context, int index) =>
               Checkbox(
                 value: checkebool,
                 onChanged: (value) {
-                  To_Cubit.get(context).chekedBox[inde](value);
+                  To_Cubit.get(context)
+                      .chekedBox(value!, To_Cubit.get(context).isCheked[index]);
                 },
                 checkColor: defaultMainColor,
               ),
