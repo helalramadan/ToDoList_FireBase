@@ -29,7 +29,7 @@ class To_Cubit extends Cubit<To_State> {
   }
 
   List<bool> isCheked = [];
-  void chekedBox(bool value, index) {
+  void chekedBox(int index, value) {
     isCheked[index] = value;
     emit(ChekedBoxState());
   }
