@@ -30,7 +30,7 @@ class To_Cubit extends Cubit<To_State> {
 
   List<bool> isCheked = [];
   void chekedBox(int index, value) {
-    isCheked[index] = value;
+    isCheked[index] = !isCheked[index];
     emit(ChekedBoxState());
   }
 
